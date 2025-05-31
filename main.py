@@ -3,13 +3,9 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-class PosterRequest(BaseModel):
+class TransactionData(BaseModel):
     status: str
-    input: str | bytes
-
-class PosterResponse(BaseModel):
-    status: str
-    output: str | bytes
+    data: str | bytes
 
 
 @app.get("/")
@@ -18,9 +14,9 @@ def read_root():
 
 @app.get("/get")
 def getter():
-    return {"input": "Something I made"}
+    return TransactionData(status='new', data='this is the original data')
 
 @app.post("/post")
-def poster(req: PosterRequest):
+def poster(req: TransactionData):
     print(f'someone sent {req}')
-    return PosterResponse(status = req.status, output=req.input)
+    return req
