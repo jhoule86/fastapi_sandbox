@@ -1,5 +1,5 @@
 from os import path as os_path
-from fastapi import FastAPI
+from fastapi import FastAPI, Request, Response, status
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from json import loads as json_loads
@@ -22,9 +22,11 @@ def getter():
     return TransactionData(status='new', data='this is the original data')
 
 @app.post("/post")
-def poster(req: TransactionData):
-    print(f'someone sent {req}')
-    return req
+def poster(transaction: TransactionData, request: Request, response: Response):
+    print(f'someone sent {transaction}')
+    print(f'with headers {request.headers}')
+    #response.status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
+    return transaction
 
 @app.get("/json/{name}")
 def get_json(name):
