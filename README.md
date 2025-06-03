@@ -25,7 +25,7 @@ You may want to craft custom json for usage with endpoints like `get` and `match
 
 ## Running
 
-Use the run script for your platform:
+Use the run script for your platform (**make sure you are using your virtual python environment where fastapi is installed!**):
 * Unix: [run.sh](run.sh)
 * Windows: [run.cmd](run.cmd)
 
