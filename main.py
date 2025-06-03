@@ -1,5 +1,10 @@
+from os import path as os_path
 from fastapi import FastAPI
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
+from json import loads as json_loads
+
+_pwd = os_path.dirname(os_path.realpath(__file__))
 
 app = FastAPI()
 
@@ -20,3 +25,19 @@ def getter():
 def poster(req: TransactionData):
     print(f'someone sent {req}')
     return req
+
+@app.get("/json/{name}")
+def get_json(name):
+    payload_file_name = os_path.realpath(f'{_pwd}/bin/response/{name}/payload.json')
+    payload_file = open(payload_file_name)
+    if not payload_file:
+        raise TypeError(f'no json payload found for {name}')
+    payload = payload_file.read()
+
+    headers = None
+    headers_file_name = os_path.realpath(f'{_pwd}/bin/response/{name}/headers.json')
+    headers_file = open(headers_file_name)
+    if headers_file:
+        headers = json_loads(headers_file.read())
+
+    return JSONResponse(content=payload, headers=headers)
