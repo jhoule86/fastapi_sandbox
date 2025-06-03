@@ -16,9 +16,9 @@ A [fastapi](https://fastapi.tiangolo.com/) app for testing HTTP/REST clients.
 2. Set up a virtual environment for Python using `venv`
 2. Use [requirements.txt](requirements.txt) to install required dependencies, including the correct `fastapi` executable for the platform
 
-### GET Responses
+### Canned json
 
-You may craft custom responses for the `/json` endpoint:
+You may want to craft custom json for usage with endpoints like `get` and `match`:
 1. Make a copy of the [bin/response/sample](bin/response/sample) directory, with a meaningful name
 2. Update the `payload.json` file to reflect the json payload to be returned
 3. Update or remove the `headers.json` file to reflect the headers to be returned
