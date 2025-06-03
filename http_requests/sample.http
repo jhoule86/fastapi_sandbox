@@ -1,3 +1,23 @@
+## Call the basic get endpoint
+
+GET http://localhost:8000/get
+
+### Call the basic post endpoint
+
+POST http://localhost:8000/post
+api-key: bob
+content-type: application/json
+
+{"status":"new","data":"This is something new for you!"}
+
 ### Call the json endpoint to get the included sample
 
 GET http://localhost:8000/json/sample
+
+### Call the match endpoint to match against the included sample
+
+POST http://localhost:8000/match/sample
+content-type: application/json
+myHeader: myValue
+
+{"status":"new", "items":["one","two","three"],"data":"foo"}

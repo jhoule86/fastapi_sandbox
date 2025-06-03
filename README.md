@@ -31,11 +31,7 @@ Use the run script for your platform:
 
 ## Usage
 
-### endpoint: json
-
-The `json` endpoint returns canned json responses and headers.
-
-* The included [http_requests/sample.http](http_requests/sample.http) file is an example request that can be executed via clients such as the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension for VS Code.
+**The included [http_requests/sample.http](http_requests/sample.http) file contains example requests for execution via clients such as the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) extension for VS Code.**
 
 ### endpoint: get
 
@@ -44,3 +40,13 @@ The `get` endpoint returns a simple json response based on a small `TransactionD
 ### endpoint: post
 
 The `post` endpoint echoes a simple json request that is expected to match the schema of the `TransactionData` model that is implemented via pydantic.
+
+### endpoint: json
+
+The `json` endpoint returns canned json responses and headers.
+
+### endpoint: match
+
+The `match` endpoint compares the POSTed data (and optionally headers) against canned data.
+A list of mismatches (or lack thereof) is returned as JSON.
+
