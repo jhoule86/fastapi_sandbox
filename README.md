@@ -49,3 +49,10 @@ The `json` endpoint returns canned json responses and headers.
 
 The `match` endpoint compares the input data sent via `POST` or `PUT` against canned data. If canned headers are found for the tag in the URL, those will be compared as well.
 A list of mismatches (or lack thereof) is returned as JSON.
+
+### Testing
+
+## Karate
+The included [karate](https://karatelabs.github.io/karate/) tests in [tests/karate](tests/karate) can be executed using a karate executable.
+
+**This repository does NOT contain a karate executable.**

@@ -72,13 +72,19 @@ async def match_json(name, request:Request):
                 expected = canned_data.headers[key]
                 actual = request.headers[key]
 
+                # be lenient about charset on incoming content-type
+                if key.lower() == 'content-type' and not ';' in expected:
+                    semi_loc_actual = actual.find(';')
+                    if (semi_loc_actual > 0):
+                        actual = actual[:semi_loc_actual]
+
                 if (expected != actual):
                     issues.append(f'The value "{actual}" for the header {key} does not match the expectation of "{expected}"')
 
     json_sent = await request.json()
 
     if json_sent != canned_data.payload:
-        # TODO: consider providing a diff.
+        # TODO: consider providing a diff instead of full values.
         issues.append(f'The payload "{json_sent}" does not match the expected payload of "{canned_data.payload}"')
 
     status_code = status.HTTP_200_OK
