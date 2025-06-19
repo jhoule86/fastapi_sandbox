@@ -12,13 +12,13 @@ Scenario: calling the get endpoint
     }
     """
 
-    Scenario: calling the post endpoint
-    Given def payload = {"status":"new","data":"This is something new for you!"}
-    And url 'http://localhost:8000/post'
-    And request payload
-    When method post
-    Then status 200
-    And match response == payload
+  Scenario: calling the post endpoint
+  Given def payload = {"status":"new","data":"This is something new for you!"}
+  And url 'http://localhost:8000/post'
+  And request payload
+  When method post
+  Then status 200
+  And match response == payload
 
   Scenario: getting the sample data
     Given url 'http://localhost:8000/json/sample'
