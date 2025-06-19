@@ -13,10 +13,19 @@ content-type: application/json
 ### Call the json endpoint to get the included sample
 
 GET http://localhost:8000/json/sample
+api-key: jerry
 
-### Call the match endpoint to match against the included sample
+### Call the match endpoint to match against the included sample - POST method
 
 POST http://localhost:8000/match/sample
+content-type: application/json
+myHeader: myValue
+
+{"status":"new", "items":["one","two","three"],"data":"foo"}
+
+### Call the match endpoint to match against the included sample - PUT method
+
+PUT http://localhost:8000/match/sample
 content-type: application/json
 myHeader: myValue
 

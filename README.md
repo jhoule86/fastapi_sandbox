@@ -47,6 +47,5 @@ The `json` endpoint returns canned json responses and headers.
 
 ### endpoint: match
 
-The `match` endpoint compares the POSTed data (and optionally headers) against canned data.
+The `match` endpoint compares the input data sent via `POST` or `PUT` against canned data. If canned headers are found for the tag in the URL, those will be compared as well.
 A list of mismatches (or lack thereof) is returned as JSON.
-

@@ -34,10 +34,13 @@ async def poster(transaction: TransactionData, request: Request, response: Respo
     return transaction
 
 @app.get("/json/{name}")
-def get_json(name):
+def get_json(name: str, request: Request):
     """
     Get a canned json response
     """
+
+    print(f'someone requested the json with name "{name}"')
+    print(f'with headers {request.headers}')
     
     try:
         canned_data = load_canned_json(name)
@@ -47,7 +50,7 @@ def get_json(name):
 
     return JSONResponse(content=canned_data.payload, headers=canned_data.headers)
 
-@app.post("/match/{name}")
+@app.api_route("/match/{name}", methods=["POST", "PUT"])
 async def match_json(name, request:Request):
     """
     Check a json request and optionally its headers against stored data
