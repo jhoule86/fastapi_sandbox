@@ -43,7 +43,21 @@ Feature: The basic endpoints
     And headers {"content-type":"application/json","myHeader":"myValue"}
     When method <METHOD>
     Then status 200
-
+    And assert response.status == 'passed'
+    And assert response.data == '[]'
+        Examples:
+            | METHOD |
+            | post   |
+            | put    | 
+    
+  Scenario Outline: failure when matching a request
+    Given url 'http://localhost:8000/match/sample'
+    And request {"status":"bad", "items":["harry","larry","mo"],"data":"bar"}
+    And headers {"content-type":"application/json","myHeader":"wrongValue"}
+    When method <METHOD>
+    Then status 400
+    And assert response.status == 'failed'
+    And assert response.data != '[]'
         Examples:
             | METHOD |
             | post   |
