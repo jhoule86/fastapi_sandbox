@@ -53,6 +53,6 @@ A list of mismatches (or lack thereof) is returned as JSON.
 ### Testing
 
 ## Karate
-The included [karate](https://karatelabs.github.io/karate/) tests in [tests/karate](tests/karate) can be executed using a karate executable.
+The included [karate](https://karatelabs.github.io/karate/) tests in [test/karate](test/karate) can be executed using a karate executable.
 
 **This repository does NOT contain a karate executable.**
