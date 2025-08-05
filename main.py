@@ -93,3 +93,14 @@ async def match_json(name, request:Request):
         status_code = status.HTTP_400_BAD_REQUEST
         status_message = 'failed'
     return JSONResponse(content=TransactionData(status=status_message, data=json_dumps(issues)).model_dump(), status_code=status_code)
+
+@app.api_route("/printer", methods=["POST", "PUT"])
+async def printer(request: Request):
+    """
+    Prints the raw request body and headers out to console
+    """
+    body = await request.body()
+    print(f'someone sent {body}')
+    print(f'with headers {request.headers}')
+
+    return TransactionData(status='done', data='look at the standard output stream for details')
