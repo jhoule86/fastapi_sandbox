@@ -49,7 +49,8 @@ jobs:
     - name: Start up the fastapi app
       run: |
         fastapi run main.py &
+        # github action runner will kill fastapi at the end.
     - name: Run the karate tests
       run: |
-        java -cp  karate.jar com.intuit.karate.Main test/karate/sample.feature
-
+        java -cp  karate.jar com.intuit.karate.Main test/karate/
+        # TODO: fail step if tests fail
