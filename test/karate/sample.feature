@@ -31,7 +31,7 @@ Feature: The basic endpoints
     "items": [
         "one",
         "two",
-        "three"
+        "four"
     ],
     "data": "foo"
     }
