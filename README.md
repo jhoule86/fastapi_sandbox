@@ -13,7 +13,7 @@ A [fastapi](https://fastapi.tiangolo.com/) app for testing HTTP/REST clients.
 ### Installation
 
 1. Install python >= 3.13.3
-2. Set up a virtual environment for Python using `venv`
+2. Set up a virtual environment at `<project_root>/.venv` for Python, by using `venv`
 2. Use [requirements.txt](requirements.txt) to install required dependencies, including the correct `fastapi` executable for the platform
 
 ### Canned json
@@ -25,7 +25,7 @@ You may want to craft custom json for usage with endpoints like `get` and `match
 
 ## Running
 
-Use the run script for your platform (**make sure you are using your virtual python environment where fastapi is installed!**):
+Use the run script for your platform (**make sure you are using your virtual python environment where fastapi is installed.** You may need to update the execution path!):
 * Unix: [run.sh](run.sh)
 * Windows: [run.cmd](run.cmd)
 
@@ -52,9 +52,17 @@ A list of mismatches (or lack thereof) is returned as JSON.
 
 ### Testing
 
+## Pytest
+The [pytest](https://pypi.org/project/pytest/) tests in [test/pytest](test/pytest) can be executed using the pytest library.
+
+If this app was properly installed, so was pytest!
+Simply execute `pytest` in the project's directory and the tests will be run.
+
 ## Karate
-The included [karate](https://karatelabs.github.io/karate/) tests in [test/karate](test/karate) can be executed using a karate executable.
+The [karate](https://karatelabs.github.io/karate/) tests in [test/karate](test/karate) can be executed using a karate executable.
 
 **This repository does NOT contain a karate executable.**
 
-If `wget` is installed, [get_karate.sh](get_karate.sh) can be used to install a version of the required jar.
+If `wget` is installed, [get_karate.sh](get_karate.sh) can be used to download a version of the required jar.
+
+Once the `karate.jar` file is present in the project directory, Karate tests may be run using the official VS Code plugin, or by running [run_karate_tests.sh](run_karate_tests.sh)
