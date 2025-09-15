@@ -45,7 +45,7 @@ jobs:
     - name: Get a Karate jar
       run: |
         # TODO: update script to allow setting a version here
-        get_karate.sh
+        sh ./get_karate.sh
     - name: Run the Karate tests
       run: |
-        run_karate_tests.sh
+        sh ./run_karate_tests.sh
