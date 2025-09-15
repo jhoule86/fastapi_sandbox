@@ -44,8 +44,8 @@ jobs:
         distribution: 'temurin'
     - name: Get a Karate jar
       run: |
-        # TODO: update script to allow setting a version here
-        sh ./get_karate.sh
+        # TODO: always get latest version?
+        wget -q -O karate.jar https://github.com/karatelabs/karate/releases/download/v1.5.1/karate-1.5.1.jar
     - name: Start up the fastapi app
       run: |
         fastapi run main.py &
