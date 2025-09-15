@@ -63,6 +63,8 @@ The [karate](https://karatelabs.github.io/karate/) tests in [test/karate](test/k
 
 **This repository does NOT contain a karate executable.**
 
-If `wget` is installed, [get_karate.sh](get_karate.sh) can be used to download a version of the required jar.
+If `wget` is installed, [get_karate.sh](get_karate.sh) can be used to download a version of the required jar file.
+
+**A recent version of Java MUST be installed in order to run jar files like Karate.jar**
 
 Once the `karate.jar` file is present in the project directory, Karate tests may be run using the official VS Code plugin, or by running [run_karate_tests.sh](run_karate_tests.sh)
