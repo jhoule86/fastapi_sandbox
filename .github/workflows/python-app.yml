@@ -46,6 +46,10 @@ jobs:
       run: |
         # TODO: update script to allow setting a version here
         sh ./get_karate.sh
-    - name: Run the Karate tests
+    - name: Start up the fastapi app
       run: |
-        sh ./run_karate_tests.sh
+        fastapi run main.py &
+    - name: Run the karate tests
+      run: |
+        java -cp  karate.jar com.intuit.karate.Main test/karate/sample.feature
+
