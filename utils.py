@@ -1,10 +1,11 @@
 from os import path as os_path
 from json import loads as json_loads
+from typing import Dict, List
 
 _pwd = os_path.dirname(os_path.realpath(__file__))
 
 class CannedJson():
-    def __init__(self, payload, headers = None):
+    def __init__(self, payload: str | List | Dict, headers: Dict | None = None):
         self.payload = payload
         self.headers = headers
 

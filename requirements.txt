@@ -1,2 +1,5 @@
 fastapi[standard]==0.116.1
 pydantic==2.11.7
+
+pytest==8.4.2
+pytest-cov==7.0.0
