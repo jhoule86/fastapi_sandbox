@@ -37,5 +37,30 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-
-    ## TODO: download karate, boot app, and run karate tests in test/karate
+    - name: Install JDK21 for running Karate
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+    - name: Get a Karate jar
+      run: |
+        # TODO: update script to allow setting a version here
+        sh ./get_karate.sh
+    - name: Start up the fastapi app
+      run: |
+        fastapi run main.py &
+        # github action runner will kill fastapi at the end.
+    - name: Run the karate tests
+      run: |
+        if [ -f karate_results ]; then
+          rm karate_results
+        fi
+        java -cp  karate.jar com.intuit.karate.Main test/karate/ > karate_results
+        cat ./karate_results
+        echo Karate tests status: 
+        if grep -q "failed: 0" ./karate_results; then
+            echo Passed
+        else
+            echo Failed
+            exit 1
+        fi
