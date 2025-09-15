@@ -37,5 +37,15 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-
-    ## TODO: download karate, boot app, and run karate tests in test/karate
+    - name: Install JDK21 for running Karate
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+    - name: Get a Karate jar
+      run: |
+        # TODO: update script to allow setting a version here
+        get_karate.sh
+    - name: Run the Karate tests
+      run: |
+        run_karate_tests.sh
