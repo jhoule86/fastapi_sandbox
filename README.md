@@ -56,3 +56,5 @@ A list of mismatches (or lack thereof) is returned as JSON.
 The included [karate](https://karatelabs.github.io/karate/) tests in [test/karate](test/karate) can be executed using a karate executable.
 
 **This repository does NOT contain a karate executable.**
+
+If `wget` is installed, [get_karate.sh](get_karate.sh) can be used to install a version of the required jar.
