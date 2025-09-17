@@ -1,0 +1,11 @@
+### Make a request that takes around 2 seconds to complete
+
+GET  http://localhost:8000/time/hang/2
+accept: application/json
+myHeader: myValue
+
+### get redirected after around 2 seconds
+
+GET  http://localhost:8000/time/redirecthang/2
+accept: application/json
+myHeader: myValue

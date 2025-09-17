@@ -1,5 +1,16 @@
 Feature: The basic endpoints
 
+ Scenario: calling the default endpoint
+    Given url 'http://localhost:8000/'
+    When method get
+    Then status 200
+    And match response == 
+    """
+    {
+    "Hello": "World",
+    }
+    """
+
   Scenario: calling the get endpoint
     Given url 'http://localhost:8000/get'
     When method get
