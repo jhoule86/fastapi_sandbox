@@ -48,8 +48,9 @@ jobs:
         wget -q -O karate.jar https://github.com/karatelabs/karate/releases/download/v1.5.1/karate-1.5.1.jar
     - name: Start up the fastapi app
       run: |
-        fastapi run main.py &
-        # github action runner will kill fastapi at the end.
+        fastapi run app/main.py &
+        # FIXME: startup failure is not failing this step in the workflow!
+        # TODO: add a cleanup step so github doesn't have to kill fastapi at the end.
     - name: Run the karate tests
       run: |
         if [ -f karate_results ]; then
