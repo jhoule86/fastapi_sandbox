@@ -2,7 +2,7 @@
 
 **Author:** Jeff Houle (jhoule86@gmail.com)
 
-**Last Update:** June 2025
+**Last Update:** 2025-09-17
 
 ## Intro
 
@@ -12,9 +12,24 @@ A [fastapi](https://fastapi.tiangolo.com/) app for testing HTTP/REST clients.
 
 ### Installation
 
-1. Install python >= 3.13.3
-2. Set up a virtual environment at `<project_root>/.venv` for Python, by using `venv`
-2. Use [requirements.txt](requirements.txt) to install required dependencies, including the correct `fastapi` executable for the platform
+**Notice:** The following examples are for debian-based linux such as Ubuntu and may not reflect the system in use.
+
+1. Install `python3` and the associated `pip` and `venv` packages
+    - for ubuntu, the command is:
+        ```
+        sudo apt install python3 python3-pip python3-venv
+        ```
+2. Set up a virtual environment at `<project_root>/.venv` for Python, by using `venv`:
+    ```
+    python3 -m venv .venv
+    ```
+3. Use [requirements.txt](requirements.txt) to install required dependencies, including tsource ./.venv/bin/activate
+he correct `fastapi` executable for the platform:
+    ```
+    source ./.venv/bin/activate
+
+    pip install -r requirements.txt
+    ```
 
 ### Canned json
 
@@ -27,7 +42,7 @@ You may want to craft custom json for usage with endpoints like `get` and `match
 
 Use the run script for your platform (**make sure you are using your virtual python environment where fastapi is installed.** You may need to update the execution path!):
 * Unix: [run.sh](run.sh)
-* Windows: [run.cmd](run.cmd)
+* Windows: [run.cmd](run(the python path will differ by version/system).cmd)
 
 ## Usage
 

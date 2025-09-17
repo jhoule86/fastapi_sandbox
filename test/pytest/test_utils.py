@@ -1,5 +1,5 @@
-from utils import CannedJson, load_canned_json
-from json import loads as json_loads
+from models.cannedjson import CannedJson
+from utils.jsonloader import load_cannedjson
 
 def test_load_sample():
     """
@@ -7,7 +7,7 @@ def test_load_sample():
     into the internal representation of data and/or headers
     """
     
-    canned = load_canned_json("sample")
+    canned = load_cannedjson("sample")
 
     assert isinstance(canned, CannedJson)
     

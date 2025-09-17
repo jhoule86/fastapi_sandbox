@@ -1,3 +1,2 @@
 #!/bin/sh
-.venv/bin/fastapi dev main.py
-
+.venv/bin/fastapi dev app/main.py

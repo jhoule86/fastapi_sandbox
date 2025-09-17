@@ -1,1 +1,1 @@
-.venv\Scripts\fastapi.exe dev main.py
+.venv\Scripts\fastapi.exe dev app\main.py
