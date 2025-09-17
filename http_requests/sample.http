@@ -1,3 +1,7 @@
+### Call the default route
+
+GET http://localhost:8000/
+
 ### Call the basic get endpoint
 
 GET http://localhost:8000/get
@@ -46,3 +50,4 @@ content-type: application/json
 myHeader: myValue
 
 {"status":"new", "items":["one","two","three"],"data":"foo"}
+
