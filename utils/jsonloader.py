@@ -21,4 +21,4 @@ def load_cannedjson(name: str) -> CannedJson:
     if headers_file:
         headers = json_loads(headers_file.read())
     
-    return CannedJson(payload, headers)
+    return CannedJson(payload=payload, headers=headers)
