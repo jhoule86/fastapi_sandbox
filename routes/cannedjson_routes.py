@@ -27,7 +27,8 @@ def get_json(name: str, request: Request):
             status_code=status.HTTP_404_NOT_FOUND,
         )
 
-    return JSONResponse(content=canned_data.payload, headers=canned_data.headers)
+    return JSONResponse(content=canned_data.payload,
+                        headers=canned_data.headers)
 
 
 @router.api_route("/match/{name}", methods=["POST", "PUT"])
@@ -49,21 +50,24 @@ async def match_json(name, request: Request):
 
     if canned_data.headers:
         for key in canned_data.headers:
-            if not key in request.headers:
-                issues.append(f"The required header {key} is missing from the request")
+            if key not in request.headers:
+                issues.append(
+                    f"The required header {key} is missing from the request"
+                    )
             else:
                 expected = canned_data.headers[key]
                 actual = request.headers[key]
 
                 # be lenient about charset on incoming content-type
-                if key.lower() == "content-type" and not ";" in expected:
+                if key.lower() == "content-type" and ";" not in expected:
                     semi_loc_actual = actual.find(";")
                     if semi_loc_actual > 0:
                         actual = actual[:semi_loc_actual]
 
                 if expected != actual:
                     issues.append(
-                        f'The value "{actual}" for the header {key} does not match the expectation of "{expected}"'
+                        f'The value "{actual}" for the header {key}' +
+                        ' does not match the expectation of "{expected}"'
                     )
 
     json_sent = await request.json()
@@ -71,7 +75,8 @@ async def match_json(name, request: Request):
     if json_sent != canned_data.payload:
         # TODO: consider providing a diff instead of full values.
         issues.append(
-            f'The payload "{json_sent}" does not match the expected payload of "{canned_data.payload}"'
+            f'The payload "{json_sent}"' +
+            'does not match the expected payload of "{canned_data.payload}"'
         )
 
     status_code = status.HTTP_200_OK

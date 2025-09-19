@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request, Response
+from fastapi import APIRouter, Request
 
 from models.transactiondata import TransactionData
 
@@ -24,7 +24,7 @@ def getter():
 
 
 @router.post("/post")
-async def poster(transaction: TransactionData, request: Request, response: Response):
+async def poster(transaction: TransactionData, request: Request):
     """
     Echoes a POSTed TransactionData
     """
