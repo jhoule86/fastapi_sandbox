@@ -1,3 +1,4 @@
+from typing import List
 from fastapi import APIRouter, Request, status
 from fastapi.responses import JSONResponse
 from json import dumps as json_dumps
@@ -46,38 +47,10 @@ async def match_json(name, request: Request):
             status_code=status.HTTP_404_NOT_FOUND,
         )
 
-    issues = []
-
-    if canned_data.headers:
-        for key in canned_data.headers:
-            if key not in request.headers:
-                issues.append(
-                    f"The required header {key} is missing from the request"
-                    )
-            else:
-                expected = canned_data.headers[key]
-                actual = request.headers[key]
-
-                # be lenient about charset on incoming content-type
-                if key.lower() == "content-type" and ";" not in expected:
-                    semi_loc_actual = actual.find(";")
-                    if semi_loc_actual > 0:
-                        actual = actual[:semi_loc_actual]
-
-                if expected != actual:
-                    issues.append(
-                        f'The value "{actual}" for the header {key}' +
-                        ' does not match the expectation of "{expected}"'
-                    )
-
+    headers = request.headers
     json_sent = await request.json()
 
-    if json_sent != canned_data.payload:
-        # TODO: consider providing a diff instead of full values.
-        issues.append(
-            f'The payload "{json_sent}"' +
-            'does not match the expected payload of "{canned_data.payload}"'
-        )
+    issues = _findIssues(headers, json_sent, canned_data)
 
     status_code = status.HTTP_200_OK
     status_message = "passed"
@@ -90,3 +63,38 @@ async def match_json(name, request: Request):
         ).model_dump(),
         status_code=status_code,
     )
+
+
+def _findIssues(headers, json_sent, canned_data: CannedJson) -> List[str]:
+    issues = []
+
+    if canned_data.headers:
+        for key in canned_data.headers:
+            if key not in headers:
+                issues.append(
+                    f"The required header {key} is missing from the request"
+                    )
+            else:
+                expected = canned_data.headers[key]
+                actual = headers[key]
+
+                # be lenient about charset on incoming content-type
+                if key.lower() == "content-type" and ";" not in expected:
+                    semi_loc_actual = actual.find(";")
+                    if semi_loc_actual > 0:
+                        actual = actual[:semi_loc_actual]
+
+                if expected != actual:
+                    issues.append(
+                        f'The value "{actual}" for the header {key}'
+                        + ' does not match the expectation of "{expected}"'
+                    )
+
+    if json_sent != canned_data.payload:
+        # TODO: consider providing a diff instead of full values.
+        issues.append(
+            f'The payload "{json_sent}"'
+            + 'does not match the expected payload of "{canned_data.payload}"'
+        )
+
+    return issues
