@@ -50,7 +50,6 @@ jobs:
       run: |
         fastapi run app/main.py &
         # FIXME: startup failure is not failing this step in the workflow!
-        # TODO: add a cleanup step so github doesn't have to kill fastapi at the end.
     - name: Run the karate tests
       run: |
         if [ -f karate_results ]; then
@@ -65,3 +64,6 @@ jobs:
             echo Failed
             exit 1
         fi
+    - name: Cleanup - kill fastapi
+      run: |
+        killall fastapi
