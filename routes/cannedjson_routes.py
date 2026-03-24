@@ -24,7 +24,7 @@ def get_json(name: str, request: Request):
     except Exception as e:
         print(str(e))
         return JSONResponse(
-            content=f"Content not found for name: {name} - {e}",
+            content=f"Response Content not found for name: {name} - {e}",
             status_code=status.HTTP_404_NOT_FOUND,
         )
 
@@ -39,11 +39,11 @@ async def match_json(name, request: Request):
     """
 
     try:
-        canned_data: CannedJson = load_cannedjson(name)
+        canned_data: CannedJson = load_cannedjson(name, True)
     except Exception as e:
         print(e)
         return JSONResponse(
-            content=f"Content not found for name: {name}",
+            content=f"Request Content not found for name: {name}",
             status_code=status.HTTP_404_NOT_FOUND,
         )
 

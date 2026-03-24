@@ -7,8 +7,10 @@ _base_dir = dirname(dirname(realpath(__file__)))
 _bin_dir = realpath(f"{_base_dir}/bin")
 
 
-def load_cannedjson(name: str) -> CannedJson:
-    dir = realpath(f"{_bin_dir}/response/{name}")
+def load_cannedjson(name: str, request: bool = False) -> CannedJson:
+
+    direction = 'request' if request else 'response'
+    dir = realpath(f"{_bin_dir}/{direction}/{name}")
 
     payload_file_name = realpath(f"{dir}/payload.json")
     payload_file = open(payload_file_name)

@@ -35,6 +35,7 @@ Feature: The basic endpoints
     Given url 'http://localhost:8000/json/sample'
     When method get
     Then status 200
+    And match header myHeader == "myValue"
     And match response == 
     """
    { 
@@ -50,8 +51,8 @@ Feature: The basic endpoints
 
   Scenario Outline: matching a request
     Given url 'http://localhost:8000/match/sample'
-    And request {"status":"new", "items":["one","two","three"],"data":"foo"}
-    And headers {"content-type":"application/json","myHeader":"myValue"}
+    And request {"status":"new", "items":["one","two","three"],"data":"bar"}
+    And headers {"content-type":"application/json","myHeader":"myRequestHeaderValue"}
     When method <METHOD>
     Then status 200
     And assert response.status == 'passed'
