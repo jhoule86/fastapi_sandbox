@@ -1,4 +1,4 @@
-fastapi[standard]==0.116.1
+fastapi[standard]==0.135.2
 pydantic==2.12.5
 
 pytest==9.0.2
