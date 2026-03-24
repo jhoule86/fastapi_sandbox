@@ -1,1 +1,1 @@
-{"content-type":"application/json","myHeader":"myValue"}
+{"content-type":"application/json","myHeader":"myRequestHeaderValue"}
