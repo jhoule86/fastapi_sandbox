@@ -23,8 +23,7 @@ A [fastapi](https://fastapi.tiangolo.com/) app for testing HTTP/REST clients.
     ```
     python3 -m venv .venv
     ```
-3. Use [requirements.txt](requirements.txt) to install required dependencies, including tsource ./.venv/bin/activate
-he correct `fastapi` executable for the platform:
+3. Use [requirements.txt](requirements.txt) to install required dependencies, including the correct `fastapi` executable for the platform:
     ```
     source ./.venv/bin/activate
 
