@@ -33,9 +33,11 @@ A [fastapi](https://fastapi.tiangolo.com/) app for testing HTTP/REST clients.
 ### Canned json
 
 You may want to craft custom json for usage with endpoints like `get` and `match`:
-1. Make a copy of the [bin/response/sample](bin/response/sample) directory, with a meaningful name
-2. Update the `payload.json` file to reflect the json payload to be returned and/or matched
-3. Update or remove the `headers.json` file to reflect the headers to be returned and/or matched
+1. Make a copy of the proper directory, using a meaningful name in place of `sample`:
+    * Requests: [bin/response/sample](bin/request/sample)
+    * Responses:  [bin/response/sample](bin/response/sample)
+2. Upload the new `payload.json` file to reflect the json payload to be returned and/or matched
+3. Update or remove the new `headers.json` file to reflect the headers to be returned and/or matched
 
 ## Running
 
@@ -70,7 +72,7 @@ A list of mismatches (or lack thereof) is returned as JSON.
 The [pytest](https://pypi.org/project/pytest/) tests in [test/pytest](test/pytest) can be executed using the pytest library.
 
 If this app was properly installed, so was pytest!
-Simply execute `pytest` in the project's directory and the tests will be run.
+Simply execute `pytest` in the project's directory (with the virtual environment activated) and the tests will be run.
 
 ## Karate
 The [karate](https://karatelabs.github.io/karate/) tests in [test/karate](test/karate) can be executed using a karate executable.
