@@ -34,8 +34,8 @@ A [fastapi](https://fastapi.tiangolo.com/) app for testing HTTP/REST clients.
 
 You may want to craft custom json for usage with endpoints like `get` and `match`:
 1. Make a copy of the [bin/response/sample](bin/response/sample) directory, with a meaningful name
-2. Update the `payload.json` file to reflect the json payload to be returned
-3. Update or remove the `headers.json` file to reflect the headers to be returned
+2. Update the `payload.json` file to reflect the json payload to be returned and/or matched
+3. Update or remove the `headers.json` file to reflect the headers to be returned and/or matched
 
 ## Running
 
