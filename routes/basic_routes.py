@@ -39,7 +39,8 @@ async def printer(request: Request):
     Prints the raw request body and headers out to console
     """
     body = await request.body()
-    print(f"someone sent {body}")
+    requestor = request.client.host
+    print(f"{requestor} sent {body}")
     print(f"with headers {request.headers}")
 
     return TransactionData(
