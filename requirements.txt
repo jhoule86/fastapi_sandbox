@@ -1,5 +1,5 @@
 fastapi[standard-no-fastapi-cloud-cli]==0.139.0
-pydantic==2.12.5
+pydantic==2.13.4
 
 pytest==9.1.1
 pytest-cov==7.1.0
